@@ -1,8 +1,15 @@
 import React from 'react'
 
-function AgeDisplay() {
+function AgeDisplay({data}) {
+    const {year, month, day} = data
+    console.log('datos desde ageDisplay', data)
+  
   return (
-    <div>AgeDisplay</div>
+    <section>
+        <h1>{year} Years</h1>
+        <h1>{month} Months</h1>
+        <h1>{day} Days</h1>
+    </section>
   )
 }
 
