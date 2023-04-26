@@ -38,11 +38,29 @@ function DateInput() {
     }
 
 
-    const calculateAge = (dateInput, currentDate )
+    const calculateAge = (userInput, currentDate) => {
+        let month = 0
+        const calculateMonth = (userInput, currentDate) => {
+            if (currentDate.month < userInput.month) {
+                month = ((currentDate.month - userInput.month) +12)
+            } else {
+                month = currentDate.month - userInput.month
+            }
+            return month
+        }
+        
+        const userAge = {
+            day : currentDate.day - userInput.day,
+            month : calculateMonth(userInput, currentDate),
+            year : (currentDate.year - userInput.year) - 1
+        }
+        console.log('USER AGE', userAge);
+        return userAge
+    }
 
     const showAge = () => {
         //cambiar 'date' por la variable con la edad resuelta 
-        setDisplayDate(dateInput)
+        setDisplayDate(calculateAge(dateInput, currentDate))
     }
     //getCurrentDate()
   return (
