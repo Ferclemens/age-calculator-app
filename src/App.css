@@ -4,10 +4,71 @@ body {
   justify-content: center;
 }
 .app--container {
-  width: 50vw;
-  height: 50vh;
+  width: 60vw;
+  height: 70vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   flex-direction: column;
+  padding: 50px;
+  border: 1px solid black;
+  border-radius: 15px 15px 150px 15px;
+}
+.input--container {
+  display: flex;
+  gap: 20px;
+}
+.input--component{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.input--date {
+  width: 70px;
+  height: 30px;
+  border-radius: 3px;
+  border: 1px solid rgb(216, 213, 213);
+}
+.input--error {
+  width: 70px;
+  height: 30px;
+  border-radius: 3px;
+  border: 1px solid rgb(243, 74, 74);
+}
+.error--message {
+  color: rgb(243, 74, 74);
+}
+.label--date {
+
+}
+.label--error {
+  color: rgb(243, 74, 74);
+}
+.button--container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  margin: 10px 0;
+}
+.display--container {
+
+}
+.line {
+  position: absolute;
+  top: 25%;
+  height: 1px;
+  width: 100%;
+  background-color: rgb(216, 213, 213);
+  border: none;
+  z-index: -1;
+}
+.button--display {
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+}
+.button--img {
+  width: 65px;
+  height: auto;
 }

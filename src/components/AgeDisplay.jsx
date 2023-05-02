@@ -2,7 +2,7 @@ import React from 'react'
 
 function AgeDisplay({data}) {
     const {year, month, day} = data
-    console.log('datos desde ageDisplay', data)
+    //console.log('datos desde ageDisplay', data)
   
   return (
     <section>
