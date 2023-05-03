@@ -1,18 +1,43 @@
+@font-face {
+  font-family: 'Poppins-Bold';
+  src: url('./assets/fonts/Poppins-Bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Poppins-BoldItalic';
+  src: url('./assets/fonts/Poppins-BoldItalic.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'Poppins-ExtraBoldItalic';
+  src: url('./assets/fonts/Poppins-ExtraBoldItalic.ttf') format('truetype');
+  font-style: normal;
+  font-weight: bold;
+}
+
 body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Poppins-Bold';
+  background-color: #f0f0f0;
 }
 .app--container {
-  width: 60vw;
-  height: 70vh;
+  width: 500px;
+  height: 55vh;
   display: flex;
   justify-content: center;
   align-items: start;
   flex-direction: column;
-  padding: 50px;
-  border: 1px solid black;
+  padding: 30px 20px 30px 20px;
+  background-color: #ffff;
   border-radius: 15px 15px 150px 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .input--container {
   display: flex;
@@ -20,28 +45,49 @@ body {
 }
 .input--component{
   display: flex;
+  position: relative;
   flex-direction: column;
   gap: 5px;
 }
 .input--date {
-  width: 70px;
-  height: 30px;
-  border-radius: 3px;
+  width: 100px;
+  height: 35px;
+  padding-left: 10px;
+  border-radius: 6px;
   border: 1px solid rgb(216, 213, 213);
+  font-family: 'Poppins-Bold';
+  font-size: medium;
+  color: rgb(41, 41, 41);
+  outline: none;
+}
+.input--date:focus{
+  border: 1px solid #864cff;
+  cursor: pointer;
 }
 .input--error {
-  width: 70px;
-  height: 30px;
-  border-radius: 3px;
+  width: 100px;
+  height: 35px;
+  padding-left: 10px;
+  border-radius: 6px;
   border: 1px solid rgb(243, 74, 74);
+  font-family: 'Poppins-Bold';
+  font-size: medium;
+  color: rgb(41, 41, 41);
 }
 .error--message {
+  position: absolute;
+  top: 60px;
+  font-family: 'Poppins-BoldItalic';
+  font-size: xx-small;
   color: rgb(243, 74, 74);
 }
 .label--date {
-
+  font-size: small;
+  letter-spacing: 3px;
+  color: rgb(100, 95, 95);
 }
 .label--error {
+  font-size: small;
   color: rgb(243, 74, 74);
 }
 .button--container {
@@ -49,26 +95,80 @@ body {
   width: 100%;
   display: flex;
   justify-content: end;
-  margin: 10px 0;
+  margin-top: 22px;
 }
 .display--container {
-
+  margin: 15px 0 25px 0;
+}
+.age--legend {
+  font-family: 'Poppins-ExtraBoldItalic';
+  font-size: 60px;
+  margin: -25px 0 -25px 20px;
+  color: rgb(41, 41, 41);
+}
+.age--number {
+  color: #864cff;
 }
 .line {
   position: absolute;
-  top: 25%;
+  top: 15px;
+  right: 10px;
   height: 1px;
-  width: 100%;
+  width: 97%;
   background-color: rgb(216, 213, 213);
   border: none;
-  z-index: -1;
+  z-index: 1;
 }
 .button--display {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  right: 10px;
   cursor: pointer;
   border: none;
   border-radius: 50%;
+  z-index: 2;
+  background-color: #ffff;
 }
 .button--img {
-  width: 65px;
-  height: auto;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 50px;
+  height: 50px;
+  transition: opacity 0.2s ease-in-out;
+}
+.button--img:hover {
+  opacity: 0;
+}
+
+@media (max-width: 700px) {
+  .app--container {
+    width: 250px;
+    height: 55vh;
+  }
+  .input--container {
+    display: flex;
+    gap: 10px;
+  }
+  .input--date {
+    width: 60px;
+    border-radius: 6px;
+    border: 1px solid rgb(216, 213, 213);
+    font-family: 'Poppins-Bold';
+  }
+  .input--error {
+    width: 60px;
+    border-radius: 6px;
+    border: 1px solid rgb(243, 74, 74);
+    font-family: 'Poppins-Bold';
+  }
+  .button--container {
+    justify-content: center;
+    margin-top: 40px;
+  }
+  .age--legend {
+    font-size: 43px;
+    margin: -15px 0 -15px 0;
+  }
 }

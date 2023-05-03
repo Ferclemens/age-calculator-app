@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import AgeDisplay from './AgeDisplay'
 
 function DateInput() {
+    //model object to display info
     const displayObject = {
         day : '--',
         month : '--',
@@ -13,13 +14,14 @@ function DateInput() {
         year : ''
     })
     const [displayDate, setDisplayDate] = useState(displayObject)
-    
+    // today date to validate and 
     const [currentDate, setCurrentDate] = useState('')
     
     const [dayError, setDayError] = useState(false)
     const [monthError, setMonthError] = useState(false)
     const [yearError, setYearError] = useState(false)
     const [invalidDate, setInvalidDate] = useState(false)
+    const [requiredError, setRequiredError] = useState(false)
 
     //console.log('currentDate', currentDate);
 
@@ -53,16 +55,17 @@ function DateInput() {
             return month
         }
         const calculateYear = (userInput, currentDate) => {
-            console.log('AÑO CARGADO',parseInt(userInput.year));
-            console.log('AÑO DATE',currentDate.year);
+            //console.log('AÑO CARGADO',parseInt(userInput.year));
+            //console.log('AÑO DATE',currentDate.year);
+            //WIP-----------------------------------------------------------    
             let year = 0
             if (currentDate.year - parseInt(userInput.year) === 0){
-                return year = 0
+                year = 0
             } 
             else if (currentDate.year > parseInt(userInput.year)){
-                return year = currentDate.year - parseInt(userInput.year) -1
+                year = currentDate.year - parseInt(userInput.year) -1
             }
-
+            return year
         }
         
         const userAge = {
@@ -75,7 +78,11 @@ function DateInput() {
     }
     const showAge = () => {
         //date inputs validation
-        if(isNaN(dateInput.day) === true || dateInput.day <= 0 || dateInput.day > 31){
+        if (dateInput.year === '' || dateInput.month === '' || dateInput.day === '' ) {
+            setRequiredError(true)
+            setDisplayDate(displayObject)
+        }
+        else if(isNaN(dateInput.day) === true || dateInput.day <= 0 || dateInput.day > 31){
             setDayError(true)
             setDisplayDate(displayObject)
         }
@@ -98,31 +105,38 @@ function DateInput() {
             setMonthError(false)
             setYearError(false)
             setInvalidDate(false)
+            setRequiredError(false)
         }
     }
   return (
     <section className='app--container'>
         <div className='input--container'>
             <div className='input--component'>
-                <label className={dayError ? 'label--error' : 'label--date'}>DAY</label>
-                <input className={dayError ? 'input--error' : 'input--date'} placeholder='DD' value={dateInput.day} name='day' onChange={handleChange}></input>
-                {dayError && <p className='error--message'>Must be a valid day</p>}
-                {invalidDate && <p className='error--message'>Must be a valid DATE.</p>}
+                <label className={dayError || invalidDate || requiredError ? 'label--error' : 'label--date'}>DAY</label>
+                <input className={dayError || invalidDate || requiredError ? 'input--error' : 'input--date'} placeholder='DD' value={dateInput.day} name='day' onChange={handleChange}></input>
+                {invalidDate && <p className='error--message'>Must be a valid date</p> ||
+                dayError && <p className='error--message'>Must be a valid day</p> ||
+                requiredError && <p className='error--message'>This field is required</p> }
             </div>
             <div className='input--component'>
-                <label className={monthError ? 'label--error' : 'label--date'}>MONTH</label>
-                <input className={monthError ? 'input--error' : 'input--date'} placeholder='MM' value={dateInput.month} name='month' onChange={handleChange}></input>
-                {monthError && <p className='error--message'>Must be a valid month</p>}
+                <label className={monthError || invalidDate || requiredError ? 'label--error' : 'label--date'}>MONTH</label>
+                <input className={monthError || invalidDate || requiredError ? 'input--error' : 'input--date'} placeholder='MM' value={dateInput.month} name='month' onChange={handleChange}></input>
+                {monthError && <p className='error--message'>Must be a valid month</p> ||
+                requiredError && <p className='error--message'>This field is required</p>}
             </div>
             <div className='input--component'>
-                <label className={yearError ? 'label--error' : 'label--date'}>YEAR</label>
-                <input className={yearError ? 'input--error' : 'input--date'} placeholder='YYYY' value={dateInput.year} name='year' onChange={handleChange}></input>
-                {yearError && <p className='error--message'>Must be in the past</p>}
+                <label className={yearError || invalidDate || requiredError ? 'label--error' : 'label--date'}>YEAR</label>
+                <input className={yearError || invalidDate || requiredError ? 'input--error' : 'input--date'} placeholder='YYYY' value={dateInput.year} name='year' onChange={handleChange}></input>
+                {yearError && <p className='error--message'>Must be in the past</p> ||
+                requiredError && <p className='error--message'>This field is required</p> }
             </div>
         </div>
         <div className='button--container'>
             <hr className='line'/>
-            <button className='button--display' onClick={showAge}><img className='button--img' src='./src/assets/images/button.png'></img></button>
+            <button className='button--display' onClick={showAge}>
+                <img className='button--img' src='./src/assets/images/button-hover.png'></img>
+                <img className='button--img' src='./src/assets/images/button.png'></img>
+            </button>
         </div>
         <div className='display--container'>
             <AgeDisplay data={displayDate}/>
