@@ -32,3 +32,14 @@ Your users should be able to:
 Want some support on the challenge? [Join our Slack community](https://www.frontendmentor.io/slack) and ask questions in the **#help** channel.
 
 **Have fun building!** 🚀
+
+## Dev Tools:
+  - React 18.2.0
+  - Vite 4.3.2
+
+## Features:
+  - Responsive
+
+## Deploy:
+  - https://your-time-in-earth.netlify.app/
+
