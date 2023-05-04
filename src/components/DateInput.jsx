@@ -134,8 +134,8 @@ function DateInput() {
         <div className='button--container'>
             <hr className='line'/>
             <button className='button--display' onClick={showAge}>
-                <img className='button--img' src='./src/assets/images/button-hover.png'></img>
-                <img className='button--img' src='./src/assets/images/button.png'></img>
+                <img className='button--img' src='./public/button-hover.png'></img>
+                <img className='button--img' src='./public/button.png'></img>
             </button>
         </div>
         <div className='display--container'>

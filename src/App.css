@@ -73,6 +73,11 @@ body {
   font-family: 'Poppins-Bold';
   font-size: medium;
   color: rgb(41, 41, 41);
+  outline: none;
+}
+.input--error:focus{
+  border: 1px solid #864cff;
+  cursor: pointer;
 }
 .error--message {
   position: absolute;
@@ -88,6 +93,7 @@ body {
 }
 .label--error {
   font-size: small;
+  letter-spacing: 3px;
   color: rgb(243, 74, 74);
 }
 .button--container {
